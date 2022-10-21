@@ -1,0 +1,48 @@
+@model Dictionary<long, _2022_6.Models.Product> 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{ // sekcja kodu
+  ViewData["Title"] = "Jakiś tytuł strony";
+
+  Random rnd = new Random();
+  int number = rnd.Next();
+}
+
+<div class="text-center">
+  <h1>@TempData["message"]</h1>
+</div>
+
+<div class="text-center">
+  <h1 class="display-4">Products</h1>
+  @foreach (var item in Model)
+  {
+    <p>@item.Key</p>
+    <p>@item.Value.Name</p>
+    <p>@item.Value.Price</p>
+    <p>@item.Value.Category</p>
+
+    <p><a asp-action="GetProduct" asp-route-id="@item.Value.id">Details</a> </p>
+  }
+</div>
+
+<div class="text-center">
+  <h2>Możesz również zarejestrować sobie nowy produkt</h2>
+  <form asp-action="Add" method="post">
+    <p>
+      <label for="id">ID</label>
+      <input type="text" name="id"/>
+      <label for="id">Name</label>
+      <input type="text" name="name"/>
+      <label for="id">Price</label>
+      <input type="text" name="price"/>
+      <label for="id">Category</label>
+      <input type="text" name="category"/>
+
+
+      <p>
+        <input type="submit" name="Wyślij"/>
+      </p>
+
+    </p>
+  </form>
+</div>

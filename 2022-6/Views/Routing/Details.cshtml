@@ -1,0 +1,15 @@
+@model _2022_6.Models.Product
+
+@{
+  ViewData["Title"] = "Pokazuję szczegóły produktu: "+Model.Name;
+}
+
+<div class="text-center">
+  <h1 class="display-4">Product details</h1>
+  <p>@Model.id</p>
+  <p>@Model.Name</p>
+  <p>@Model.Price</p>
+  <p>@Model.Category</p>
+
+  <a href="/Routing/List">Powrót</a>
+</div>
